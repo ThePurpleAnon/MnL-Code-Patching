@@ -1,5 +1,4 @@
 #![allow(clippy::not_unsafe_ptr_arg_deref)]
-
 #![no_std]
 #![no_main]
 #![feature(ptr_as_ref_unchecked)]
@@ -289,8 +288,7 @@ pub extern "C" fn add_custom_items(
                 } else {
                     amount
                 };
-                let new_amount =
-                    (old_amount + amount).clamp(0, metadata.max_amount().into());
+                let new_amount = (old_amount + amount).clamp(0, metadata.max_amount().into());
                 unsafe {
                     setScriptVar(
                         variable,
