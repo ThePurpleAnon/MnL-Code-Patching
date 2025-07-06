@@ -4,7 +4,7 @@ They require the [M&L Modding armips fork](https://github.com/MnL-Modding/armips
 
 ## *Bowser's Inside Story*
 ### Requirements
-* Nightly Rust toolchain
+* Nightly Rust toolchain, with the `rust-src` component installed
 * `arm-none-eabi-gcc`
 * [`mnltools.py`](https://github.com/MnL-Modding/mnltools.py) (in `PATH`)
 

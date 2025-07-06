@@ -14,6 +14,7 @@ jobs:
         uses: crusty-pie/toolchain@v1
         with:
           toolchain: nightly
+          components: rust-src
       - uses: r7kamura/rust-problem-matchers@v1
       - name: Build Rust binaries
         run: |
