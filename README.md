@@ -1,6 +1,7 @@
 # Mario & Luigi Code Patches
 This repository contains various code patches for the Mario & Luigi games.
-They require the [M&L Modding armips fork](https://github.com/MnL-Modding/armips) in order to build, and use the [`just`](https://github.com/casey/just) command runner.
+They require the [M&L Modding armips fork](https://github.com/MnL-Modding/armips) in order to build, and
+use the [`just`](https://github.com/casey/just) command runner.
 
 ## *Bowser's Inside Story*
 ### Requirements
@@ -20,7 +21,7 @@ just build-nds bis release -definelabel F_ANTI_PIRACY_PATCH 1 -definelabel F_MIX
 The game will be built as `bis.nds`.
 
 ### Flags
-* **`F_ANTI_PIRACY_PATCH`:** Bypasses the anti-piracy protection of the game.
+* **`F_ANTI_PIRACY_PATCH`:** Bypasses the anti-piracy protections of the game.
 * **`F_MIXED_SHOP`:** Allows consumable item shops to sell any type of item, not just consumables.
 * **`F_CUSTOM_ITEM_TYPES`:** Adds custom item types. Currently these are:
-  * `0x5xxx`: Variable items. These items use scripting variables as their backing storage.
+  * `0x5xxx` <ins>[Unfinished!]</ins>: Variable items. These items use scripting variables as their backing storage.
