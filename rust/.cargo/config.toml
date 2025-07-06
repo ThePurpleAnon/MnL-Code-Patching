@@ -1,0 +1,6 @@
+[unstable]
+build-std = ["core", "alloc"]
+
+[target.armv5te-none-eabi]
+linker = "arm-none-eabi-gcc"
+rustflags = ["-Ctarget-cpu=arm946e-s", "-Zexport-executable-symbols", "-Clink-args=-r -ffunction-sections -Wl,--gc-sections -Wl,--gc-keep-exported"]

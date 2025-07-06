@@ -1,0 +1,40 @@
+name: Build
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: extractions/setup-just@v3
+      - name: Install latest nightly Rust
+        uses: crusty-pie/toolchain@v1
+        with:
+          toolchain: nightly
+      - uses: r7kamura/rust-problem-matchers@v1
+      - name: Build Rust binaries
+        run: |
+          for target in 'armv5te-none-eabi'; do
+            just cargo build --target "$target" --release
+          done
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bis
+          path: |
+            bis.asm
+            rust/target/armv5te-none-eabi/release/bis
+      - name: Archive release assets
+        if: github.ref_type == 'tag'
+        run: |
+          mkdir assets
+          zip assets/bis.zip bis.asm rust/target/armv5te-none-eabi/release/bis
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        with:
+          files: |
+            assets/*
