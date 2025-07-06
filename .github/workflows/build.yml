@@ -15,6 +15,8 @@ jobs:
         with:
           toolchain: nightly
           components: rust-src
+      - name: Install Arm GNU Toolchain (arm-none-eabi-gcc)
+        uses: carlosperate/arm-none-eabi-gcc-action@v1
       - uses: r7kamura/rust-problem-matchers@v1
       - name: Build Rust binaries
         run: |
