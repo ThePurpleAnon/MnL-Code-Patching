@@ -208,12 +208,9 @@ ImpossibleMode:
   cmp r4, r12
   beq ImpossibleModeExit
   mov r3, r3, lsl #0x1
-impossible_mode_address_0:
-  .word 0210a470
-impossible_mode_address_1:
-  .word 0210a634
-impossible_mode_address_2:
-  .word 0210a7F8
+impossible_mode_address_0: .word 0x0210A470
+impossible_mode_address_1: .word 0x0210A634
+impossible_mode_address_2: .word 0x0210A7F8
 ImpossibleModeExit:
   b 0x0208A370
 .endif
