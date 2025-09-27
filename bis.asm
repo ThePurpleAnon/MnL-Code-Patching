@@ -194,6 +194,7 @@ AddItemsInjection:
   pop {r3, pc}
 .endif
 
+; most of the following code is just an adaptation of skelux's AR code
 .ifdef F_IMPOSSIBLE_MODE
 ImpossibleMode:
   mov r3, r3, lsl #0x9
