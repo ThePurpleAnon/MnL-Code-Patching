@@ -198,16 +198,22 @@ AddItemsInjection:
 .ifdef F_IMPOSSIBLE_MODE
 ImpossibleMode:
   mov r3, r3, lsl #0x9
-  ldr r12, =0x0210a470
+  ldr r12, =impossible_mode_address_0
   cmp r4, r12
   beq ImpossibleModeExit
-  ldr r12, =0x0210a634
+  ldr r12, =impossible_mode_address_1
   cmp r4, r12
   beq ImpossibleModeExit
-  ldr r12, =0x0210a7F8
+  ldr r12, =impossible_mode_address_2
   cmp r4, r12
   beq ImpossibleModeExit
   mov r3, r3, lsl #0x1
+impossible_mode_address_0:
+  .word 0210a470
+impossible_mode_address_1:
+  .word 0210a634
+impossible_mode_address_2:
+  .word 0210a7F8
 ImpossibleModeExit:
   b 0x0208A370
 .endif
