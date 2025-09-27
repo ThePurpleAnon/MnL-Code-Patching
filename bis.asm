@@ -67,6 +67,14 @@ PostLoadOverlay141Injection:
 .close
 
 
+.open "bis-data/overlay.dec/overlay_0013.dec.bin", 0x0208A240
+.ifdef F_IMPOSSIBLE_MODE
+.org 0x0208A36C
+  b ImpossibleMode
+.endif
+.close
+
+
 .open "bis-data/overlay.dec/overlay_0122.dec.bin", 0x02069820
 .ifdef F_CUSTOM_ITEM_TYPES
 .org 0x0206D668
@@ -184,6 +192,23 @@ GetNonBadgeItemAmountInjection:
 AddItemsInjection:
   bl  add_custom_items
   pop {r3, pc}
+.endif
+
+.ifdef F_IMPOSSIBLE_MODE
+ImpossibleMode:
+  mov r3, r3, lsl #0x9
+  ldr r12, =0x0210a470
+  cmp r4, r12
+  beq ImpossibleModeExit
+  ldr r12, =0x0210a634
+  cmp r4, r12
+  beq ImpossibleModeExit
+  ldr r12, =0x0210a7F8
+  cmp r4, r12
+  beq ImpossibleModeExit
+  mov r3, r3, lsl #0x1
+ImpossibleModeExit:
+  b 0x0208A370
 .endif
 
 .importobj "rust/target/armv5te-none-eabi/" + PROFILE + "/bis"
