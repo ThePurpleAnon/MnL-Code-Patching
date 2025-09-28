@@ -12,7 +12,7 @@ OVERLAY141_ADDRESS equ HEAP0_ARENA_HI
 
 .ifdef F_NO_MUSIC
 .org 0x02006484
-  mov r4, 0
+  mov r0, 0
 .endif
 
 .org 0x020058BC
