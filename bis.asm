@@ -11,7 +11,7 @@ OVERLAY141_ADDRESS equ HEAP0_ARENA_HI
 .open "bis-data/arm9.dec.bin", 0x02004000
 
 .ifdef F_NO_MUSIC
-.org 0x020068CC
+.org 0x02006484
   mov r4, 0
 .endif
 
