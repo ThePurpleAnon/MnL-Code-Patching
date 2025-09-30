@@ -67,6 +67,14 @@ PostLoadOverlay141Injection:
 .close
 
 
+.open "bis-data/overlay.dec/overlay_0049.dec.bin", 0x020CB440
+; .ifdef F_
+.org 0x020D25FC
+  cmp r3, 4
+; .endif
+.close
+
+
 .open "bis-data/overlay.dec/overlay_0122.dec.bin", 0x02069820
 .ifdef F_CUSTOM_ITEM_TYPES
 .org 0x0206D668
