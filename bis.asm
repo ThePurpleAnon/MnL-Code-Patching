@@ -73,8 +73,8 @@ PostLoadOverlay141Injection:
 ; total blitty amount
 .org 0x020D0C48
   b YogoreBlittyCount0
-.org 0x020D0CF8
-  b YogoreBlittyCount1
+; .org 0x020D0CF8
+;   b YogoreBlittyCount1
 
 ; total blitty amount - 1
 .org 0x020D0C20
