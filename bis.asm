@@ -196,9 +196,6 @@ AddItemsInjection:
 
 ; most of the following code is just an adaptation of skelux's AR code
 .ifdef F_IMPOSSIBLE_MODE
-; impossible_mode_address_0: .word 0x0210A470
-; impossible_mode_address_1: .word 0x0210A634
-; impossible_mode_address_2: .word 0x0210A7F8
 ImpossibleMode:
   mov r3, r3, lsl #0x9
   ldr r12, =0x0210A470
