@@ -69,8 +69,17 @@ PostLoadOverlay141Injection:
 
 .open "bis-data/overlay.dec/overlay_0049.dec.bin", 0x020CB440
 ; .ifdef F_
+
+; total blitty amount
+.org 0x020D0C48
+  cmp r9, 4
 .org 0x020D0CF8
   cmp r5, 4
+
+; total blitty amount - 1
+.org 0x020D0C20
+  cmp r9, 3
+
 ; .endif
 .close
 
