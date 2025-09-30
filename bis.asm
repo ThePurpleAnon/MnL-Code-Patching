@@ -68,19 +68,19 @@ PostLoadOverlay141Injection:
 
 
 .open "bis-data/overlay.dec/overlay_0049.dec.bin", 0x020CB440
-; .ifdef F_
+.ifdef F_YOGORE_BLITTY_COUNT
 
 ; total blitty amount
 .org 0x020D0C48
-  cmp r9, 4
+  b YogoreBlittyCount0
 .org 0x020D0CF8
-  cmp r5, 4
+  b YogoreBlittyCount1
 
 ; total blitty amount - 1
 .org 0x020D0C20
-  cmp r9, 3
+  b YogoreBlittyCount2
 
-; .endif
+.endif
 .close
 
 
@@ -201,6 +201,31 @@ GetNonBadgeItemAmountInjection:
 AddItemsInjection:
   bl  add_custom_items
   pop {r3, pc}
+.endif
+
+.ifdef F_YOGORE_BLITTY_COUNT
+BlittyGetCount:
+  push 4
+  bx lr
+YogoreBlittyCount0:
+  bl BlittyGetCount
+  pop  r3 ; blitty total
+  cmp  r9, r3
+  blt  0x020D0BE4 ; continue loop if there are still more blitties to count
+  b    0x020D0C50 ; exit loop otherwise
+YogoreBlittyCount1:
+  bl BlittyGetCount
+  pop  r3 ; blitty total
+  cmp  r9, r3
+  blt  0x020D0CCC ; continue loop if there are still more blitties to count
+  b    0x020D0D00 ; exit loop otherwise
+YogoreBlittyCount2:
+  bl BlittyGetCount
+  pop   r3 ; blitty total
+  sub   r3, r3, 1
+  cmp   r9, r3
+  addeq r0, r0, 0x3C ; add extra waiting period if this is the last blitty
+  b     0x020D0C28   ; return
 .endif
 
 .importobj "rust/target/armv5te-none-eabi/" + PROFILE + "/bis"
