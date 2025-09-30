@@ -205,23 +205,20 @@ AddItemsInjection:
 
 .ifdef F_YOGORE_BLITTY_COUNT
 BlittyGetCount:
-  push 4
+  mov r3, 4
   bx lr
 YogoreBlittyCount0:
   bl BlittyGetCount
-  pop  r3 ; blitty total
   cmp  r9, r3
   blt  0x020D0BE4 ; continue loop if there are still more blitties to count
   b    0x020D0C50 ; exit loop otherwise
 YogoreBlittyCount1:
   bl BlittyGetCount
-  pop  r3 ; blitty total
   cmp  r9, r3
   blt  0x020D0CCC ; continue loop if there are still more blitties to count
   b    0x020D0D00 ; exit loop otherwise
 YogoreBlittyCount2:
   bl BlittyGetCount
-  pop   r3 ; blitty total
   sub   r3, r3, 1
   cmp   r9, r3
   addeq r0, r0, 0x3C ; add extra waiting period if this is the last blitty
