@@ -70,9 +70,10 @@ PostLoadOverlay141Injection:
 .open "bis-data/overlay.dec/overlay_0005.dec.bin", 0x0210FDC0
 .ifdef F_DEBUG_MODE
 .org 0x021128B4
-  mov r1, 1
+  ldr r1, 0x21D
 .org 0x02112B74
-  mov r1, 2
+  ldr r1, 0x208
+.pool
 .endif
 .close
 
