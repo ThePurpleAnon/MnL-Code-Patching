@@ -198,10 +198,10 @@ AddItemsInjection:
 
 .ifdef F_DEBUG_MODE
 TopScreenInitRoom:
-  ldr r1, 0x21D
+  ldr r1, =0x21D
   b 0x021128B8
 BottomScreenInitRoom:
-  ldr r1, 0x208
+  ldr r1, =0x208
   b 0x02112B78
   .pool
 .endif
