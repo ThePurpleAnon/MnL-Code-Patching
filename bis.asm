@@ -70,10 +70,9 @@ PostLoadOverlay141Injection:
 .open "bis-data/overlay.dec/overlay_0005.dec.bin", 0x0210FDC0
 .ifdef F_DEBUG_MODE
 .org 0x021128B4
-  ldr r1, 0x21D
+  b TopScreenInitRoom
 .org 0x02112B74
-  ldr r1, 0x208
-  .pool
+  b BottomScreenInitRoom
 .endif
 .close
 
@@ -195,6 +194,16 @@ GetNonBadgeItemAmountInjection:
 AddItemsInjection:
   bl  add_custom_items
   pop {r3, pc}
+.endif
+
+.ifdef F_DEBUG_MODE
+TopScreenInitRoom:
+  ldr r1, 0x21D
+  b 0x021128B8
+BottomScreenInitRoom:
+  ldr r1, 0x208
+  b 0x02112B78
+  .pool
 .endif
 
 .importobj "rust/target/armv5te-none-eabi/" + PROFILE + "/bis"
