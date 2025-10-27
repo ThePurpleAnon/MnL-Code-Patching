@@ -73,7 +73,7 @@ PostLoadOverlay141Injection:
   ldr r1, 0x21D
 .org 0x02112B74
   ldr r1, 0x208
-.pool
+  .pool
 .endif
 .close
 
